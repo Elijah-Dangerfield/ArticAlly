@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dangerfield.artically.R
 import com.dangerfield.artically.databinding.FragmentTopHeadlinesBinding
@@ -53,9 +54,20 @@ class TopHeadlinesFragment : Fragment(R.layout.fragment_top_headlines) {
     }
 
     private fun setupView() {
+        setupRecyclerView()
+        setupRefresher()
+    }
+
+    private fun setupRecyclerView() {
         binding.articlesRecyclerView.layoutManager = LinearLayoutManager(view?.context)
         binding.articlesRecyclerView.adapter = adapter
-        setupRefresher()
+        adapter.setOnItemClickListener { item, view ->
+            val bundle = Bundle()
+            (item as? TopHeadlineItem)?.let {
+                bundle.putParcelable(ArticleDetailsFragment.articleKey,it.data)
+                Navigation.findNavController(view).navigate(R.id.action_topHeadlinesFragment_to_articleDetailsFragment,bundle)
+            }
+        }
     }
 
     private fun setupRefresher() {

@@ -2,6 +2,7 @@ package com.dangerfield.artically.presentation.topheadlines
 
 import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.dangerfield.artically.R
 import com.dangerfield.artically.databinding.ItemTopHeadlineBinding
 import com.dangerfield.artically.domain.model.Article
@@ -11,7 +12,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TopHeadlineItem(private val data: Article) : BindableItem<ItemTopHeadlineBinding>() {
+class TopHeadlineItem(val data: Article) : BindableItem<ItemTopHeadlineBinding>() {
     override fun bind(viewBinding: ItemTopHeadlineBinding, position: Int) {
         viewBinding.apply {
             articleTitle.text = data.title ?: "Untitled"
@@ -24,6 +25,7 @@ class TopHeadlineItem(private val data: Article) : BindableItem<ItemTopHeadlineB
                 Glide.with(articleImage.context)
                     .load(data.urlToImage)
                     .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .into(articleImage)
             }
         }
