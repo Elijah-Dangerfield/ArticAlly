@@ -10,5 +10,7 @@
 
     <color name="darkerFilter">#D7000000</color>
     <color name="darkFilter">#A9000000</color>
+    <color name="lightGrey">#5C5C5C</color>
+
 
 </resources>

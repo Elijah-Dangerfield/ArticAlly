@@ -56,6 +56,9 @@ class TopHeadlinesFragment : Fragment(R.layout.fragment_top_headlines) {
     private fun setupView() {
         setupRecyclerView()
         setupRefresher()
+        binding.include.ibSearch.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_topHeadlinesFragment_to_searchFragment)
+        }
     }
 
     private fun setupRecyclerView() {
