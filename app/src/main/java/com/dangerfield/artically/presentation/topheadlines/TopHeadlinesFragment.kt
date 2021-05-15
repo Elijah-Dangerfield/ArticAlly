@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dangerfield.artically.R
 import com.dangerfield.artically.databinding.FragmentTopHeadlinesBinding
@@ -57,7 +58,7 @@ class TopHeadlinesFragment : Fragment(R.layout.fragment_top_headlines) {
         setupRecyclerView()
         setupRefresher()
         binding.include.ibSearch.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_topHeadlinesFragment_to_searchFragment)
+            findNavController().navigate(R.id.action_topHeadlinesFragment_to_searchFragment)
         }
     }
 

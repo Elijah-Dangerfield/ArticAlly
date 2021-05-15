@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dangerfield.artically.R
 import com.dangerfield.artically.databinding.FragmentSearchBinding
@@ -99,7 +100,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun handleClosedState() {
-        NavHostFragment.findNavController(this).popBackStack()
+        findNavController().navigateUp()
     }
 
 
