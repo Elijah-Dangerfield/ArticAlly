@@ -5,5 +5,7 @@
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="header_margin_start">16dp</dimen>
 
+    <dimen name="chip_icon_diameter">32dp</dimen>
+
 
 </resources>
